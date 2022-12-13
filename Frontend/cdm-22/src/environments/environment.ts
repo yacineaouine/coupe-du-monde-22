@@ -8,5 +8,6 @@ export const environment = {
   production: false,
   urlFront: "http://localhost:4200/", 
   urlBack: "http://localhost:80"
-
+  // urlFront: "https://whowillwin22.web.app/",
+  // urlBack: "https://whowillwin22.ew.r.appspot.com"
 };

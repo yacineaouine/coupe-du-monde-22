@@ -8,7 +8,8 @@ import { ApiService } from '../services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  progress: boolean = false;
+  progressDemi: boolean = false;
+  progressFinale: boolean = false;
 
   playDemi1: boolean = false;
   playDemi2: boolean = false;
@@ -210,18 +211,18 @@ export class HomeComponent implements OnInit {
   list_demi: any[] = [
     {
       precision_modele: null,
-      played: false,
+      played: true,
       date: "Mar. 13/12",
       team1: {
         flag: 'fi fi-ar',
         name: 'Argentine',
-        score: '',
-        winner: false
+        score: '3',
+        winner: true
       },
       team2: {
         flag: 'fi fi-hr',
         name: 'Croatie',
-        score: '',
+        score: '0',
         winner: false
       }
     },
@@ -249,8 +250,8 @@ export class HomeComponent implements OnInit {
       played: false,
       date: "Dim. 18/12",
       team1: {
-        flag: '',
-        name: '',
+        flag: 'fi fi-ar',
+        name: 'Argentine',
         score: '',
         winner: false
       },
@@ -295,16 +296,19 @@ export class HomeComponent implements OnInit {
 
  
       switch (indexMatch) {
+
         case 0:
-            this.playDemi1 = true;
-            game.played = true;
-            this.playGameDemi1();
+            // this.playDemi1 = true;
+            // game.played = true;
+            // this.playGameDemi1();
             break;
+
         case 1:
             this.playDemi2 = true;
             game.played = true;
             this.playGameDemi2();
             break;
+
       };
 
       this.disableFinalBtn();
@@ -312,74 +316,73 @@ export class HomeComponent implements OnInit {
   }
 
   
-  playGameDemi1() {
+  // playGameDemi1() {
 
-    this.progress = true;
+  //   this.progressDemi = true;
 
-    this.api.getResultMatchDemi()
-    .subscribe(
-      response => {
+  //   this.api.getResultMatchDemi()
+  //   .subscribe(
+  //     response => {
 
-        this.winner = response;
+  //       this.winner = response;
 
-        let result=response.data[0][1];
+  //       let result=response.data[0][1];
 
-        let team1Winner = {
-          flag: '',
-          name: '',
-          score: '',
-          winner: false
-        };
+  //       let team1Winner = {
+  //         flag: '',
+  //         name: '',
+  //         score: '',
+  //         winner: false
+  //       };
 
-        switch(result) {
-          case 0:
-              this.list_demi[0].team1.winner=false;
-              this.list_demi[0].team1.score='0';
-              this.list_demi[0].team2.winner=true;
-              this.list_demi[0].team2.score='1';
+  //       switch(result) {
 
-            //Ajout equipe gagnante à la phase finale
-            team1Winner.flag = this.list_demi[0].team2.flag;
-            team1Winner.name = this.list_demi[0].team2.name;
+  //         case 0:
+  //           this.list_demi[0].team1.winner=false;
+  //           this.list_demi[0].team1.score='0';
+  //           this.list_demi[0].team2.winner=true;
+  //           this.list_demi[0].team2.score='1';
 
-            this.list_finale[0].team1 = team1Winner
+  //           //Ajout equipe gagnante à la phase finale
+  //           team1Winner.flag = this.list_demi[0].team2.flag;
+  //           team1Winner.name = this.list_demi[0].team2.name;
+  //           this.list_finale[0].team1 = team1Winner
+  //             break;
 
-              break;
-          case 1:
-            this.list_demi[0].team1.winner=false;
-            this.list_demi[0].team1.score='1';
-            this.list_demi[0].team2.winner=false;
-            this.list_demi[0].team2.score='1';
-              break;
-          case 2:
-            this.list_demi[0].team1.winner=true;
-            this.list_demi[0].team1.score='1';
-            this.list_demi[0].team2.winner=false;
-            this.list_demi[0].team2.score='0';
+  //         case 1:
+  //           this.list_demi[0].team1.winner=false;
+  //           this.list_demi[0].team1.score='1';
+  //           this.list_demi[0].team2.winner=false;
+  //           this.list_demi[0].team2.score='1';
+  //             break;
 
-            //Ajout equipe gagnante à la phase finale
-            team1Winner.flag = this.list_demi[0].team1.flag;
-            team1Winner.name = this.list_demi[0].team1.name;
+  //         case 2:
+  //           this.list_demi[0].team1.winner=true;
+  //           this.list_demi[0].team1.score='1';
+  //           this.list_demi[0].team2.winner=false;
+  //           this.list_demi[0].team2.score='0';
 
-            this.list_finale[0].team1 = team1Winner;
-
-            break;
+  //           //Ajout equipe gagnante à la phase finale
+  //           team1Winner.flag = this.list_demi[0].team1.flag;
+  //           team1Winner.name = this.list_demi[0].team1.name;
+  //           this.list_finale[0].team1 = team1Winner;
+  //           break;
           
-        };
+  //       };
   
-        this.list_demi[0].precision_modele=response.precision;
+  //       this.list_demi[0].precision_modele=response.precision;
 
 
-        this.progress = false;
+  //       this.progressDemi = false;
 
-      }
-    )
+  //     }
+  //   )
 
-  } 
+  // } 
   
   playGameDemi2() {
 
-    this.progress = true;
+    this.progressDemi = true;
 
     this.api.getResultMatchDemi()
     .subscribe(
@@ -397,6 +400,7 @@ export class HomeComponent implements OnInit {
         };
 
         switch(result) {
+
           case 0:
               this.list_demi[1].team1.winner=false;
               this.list_demi[1].team1.score='0';
@@ -406,16 +410,16 @@ export class HomeComponent implements OnInit {
             //Ajout equipe gagnante à la phase finale
             team2Winner.flag = this.list_demi[1].team2.flag;
             team2Winner.name = this.list_demi[1].team2.name;
-
             this.list_finale[0].team2 = team2Winner;
-
               break;
+
           case 1:
             this.list_demi[1].team1.winner=false;
             this.list_demi[1].team1.score='1';
             this.list_demi[1].team2.winner=false;
             this.list_demi[1].team2.score='1';
               break;
+
           case 2:
             this.list_demi[1].team1.winner=true;
             this.list_demi[1].team1.score='1';
@@ -425,9 +429,7 @@ export class HomeComponent implements OnInit {
             //Ajout equipe gagnante à la phase finale
             team2Winner.flag = this.list_demi[1].team1.flag;
             team2Winner.name = this.list_demi[1].team1.name;
-
             this.list_finale[0].team2 = team2Winner;
-
             break;
           
         };
@@ -435,7 +437,7 @@ export class HomeComponent implements OnInit {
 
         this.list_demi[1].precision_modele=response.precision;
 
-        this.progress = false;
+        this.progressDemi = false;
 
       }
     )
@@ -445,12 +447,11 @@ export class HomeComponent implements OnInit {
   playFinalGame(game: any) {
 
     
-    this.progress = true;
+    this.progressFinale = true;
 
     setTimeout(()=> {
       this.winnerWorldCup = true;
-      this.progress = false;
-
+      this.progressFinale = false;
     }, 4000);
 
   }

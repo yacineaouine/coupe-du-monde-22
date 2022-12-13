@@ -1,9 +1,30 @@
+canvas {
+    width: 300px !important;
+    height: 100% !important;
+}
+
 .dashboard {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10px;
 }
 
 h2 {
     text-align: center;
+    margin-top: 16px;
+}
+
+mat-card {
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.list_players {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

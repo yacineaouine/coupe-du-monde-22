@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Chart, ChartConfiguration, ChartOptions } from 'chart.js';
+import { Chart, ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-teams',
@@ -11,12 +11,22 @@ export class TeamsComponent {
 
   teams: any[] = [];
 
+  //RADAR CHART
+  public demoradarChartLabels:string[] = ['But', 'Possession', 'Cartons jaunes', 'Cartons rouges', 'Fautes'];
+ 
+  public demoradarChartData:any = [
+    {data: [5, 4, 3, 2, 1], label: 'Equipe A'},
+    {data: [1, 2, 3, 4, 5], label: 'Equipe B'}
+  ];
+  public radarChartType: ChartType = "radar";
+
+
   //BAR CHART
   public barChartData: ChartConfiguration<'bar'>['data'] = {
     labels: [ '1T', '2T', '3T', '4T' ],
     datasets: [
-      { data: [ 0, 0, 0, 0 ], label: 'Radiations' },
-      { data: [ 0, 0, 0, 0 ], label: 'Immatriculations' }
+      { data: [ 10, 10, 10, 10 ], label: 'Equipe A' },
+      { data: [ 20, 20, 20, 20 ], label: 'Equipe B' }
     ]
   };
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
@@ -36,16 +46,16 @@ export class TeamsComponent {
     ],
     datasets: [
       {
-        data: [ 24476, 276710135, 27503771, 322900000 ],
-        label: 'CA 2020',
+        data: [ 10, 10, 10, 10 ],
+        label: 'Résultats 2021',
         fill: true,
         tension: 0.5,
         borderColor: 'black',
         backgroundColor: 'rgba(13,202,240,0.3)'
       },
       {
-        data: [ 247062476, 276710135, 275093771, 328076129 ],
-        label: 'CA 2021',
+        data: [ 20, 20, 20, 20 ],
+        label: 'Résultats 2022',
         fill: true,
         tension: 0.5,
         borderColor: 'black',
@@ -74,5 +84,18 @@ export class TeamsComponent {
     )
 
   }
+
+    seeDetails(team: any) {
+      console.log(team)
+    }
+
+    // events
+    public chartClicked(e:any):void {
+      // console.log(e);
+    }
+   
+    public chartHovered(e:any):void {
+      // console.log(e);
+    }
 
 }

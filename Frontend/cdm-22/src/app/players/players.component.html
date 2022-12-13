@@ -4,12 +4,12 @@
 
 <section class="dashboard">
 
-    <canvas baseChart
-    id="barChart"
-    [data]="barChartData"
-    [options]="barChartOptions"
-    [type]="'bar'">
-    </canvas>
+  <canvas baseChart
+  id="barChart"
+  [data]="barChartData"
+  [options]="barChartOptions"
+  [type]="'bar'">
+  </canvas>
 
   <canvas baseChart 
     [type]="'line'"
@@ -18,6 +18,13 @@
     [legend]="lineChartLegend">
   </canvas>
 
+  <canvas baseChart
+  [datasets]="demoradarChartData"
+  [labels]="demoradarChartLabels"
+  [type]="radarChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)">
+  </canvas>
 
 </section>
 
@@ -26,7 +33,8 @@
 
 <section class="list_players">
 
-
-
+  <mat-card *ngFor="let player of players; let id = index" (click)="seeDetails(player)">
+    <mat-card-content>{{player.name}}</mat-card-content>
+  </mat-card>
 
 </section>

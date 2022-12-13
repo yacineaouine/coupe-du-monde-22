@@ -38,7 +38,7 @@
         <mat-icon matListItemIcon>folder</mat-icon>
         <div matListItemTitle>GitHub</div>
         <div matListItemLine>
-          <a href="https://github.com/yacineaouine" target="_blank">Voir le code source</a>
+          <a href="https://github.com/yacineaouine/coupe-du-monde-22" target="_blank">Voir le code source</a>
         </div>
       </mat-list-item>
 
@@ -63,13 +63,13 @@
       <mat-list-item >
         <mat-icon matListItemIcon>link</mat-icon>
         <div matListItemTitle>LinkedIn</div>
-        <div matListItemLine><a href="" target="_blank">Profil LinkedIn</a></div>
+        <div matListItemLine><a href="https://www.linkedin.com/in/yacine-aouine/" target="_blank">Profil LinkedIn</a></div>
       </mat-list-item>
 
       <mat-list-item >
         <mat-icon matListItemIcon>link</mat-icon>
         <div matListItemTitle>Malt</div>
-        <div matListItemLine><a href="" target="_blank">Profil Malt</a></div>
+        <div matListItemLine><a href="https://www.malt.fr/profile/yacineaouine" target="_blank">Profil Malt</a></div>
       </mat-list-item>
 
       <mat-list-item >
@@ -92,12 +92,12 @@
       <button type="button" mat-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>{{title}} - {{subtitle}}</span>
+      <span class="title" routerLink="/">{{title}} - {{subtitle}}</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button disabled="true" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <button disabled="true" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar>
