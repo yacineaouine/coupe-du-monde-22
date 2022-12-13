@@ -1,0 +1,112 @@
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+
+    <span class="version">v1.0.0</span>
+
+    <mat-list>
+
+      <div mat-subheader>Navigation</div>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>home</mat-icon>
+        <div matListItemTitle>
+          <a routerLink="/">Home</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>sports_soccer</mat-icon>
+        <div matListItemTitle>
+          <a routerLink="/teams">Les Equipes</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>groups</mat-icon>
+        <div matListItemTitle>
+          <a routerLink="/players">Les Joueurs</a>
+        </div>
+      </mat-list-item>
+
+
+      <mat-divider></mat-divider>
+
+      <div mat-subheader>Projet</div>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>GitHub</div>
+        <div matListItemLine>
+          <a href="https://github.com/yacineaouine" target="_blank">Voir le code source</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>Colab</div>
+        <div matListItemLine>
+          <a href="https://colab.research.google.com/drive/14JJ0shgjLnfGDa3aeK-QjRU9mdhUBNp6#scrollTo=4oUP1BPgQdRq" target="_blank">Voir le Notebook</a>
+        </div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <div mat-subheader>Little Boy Technology</div>
+
+      <mat-list-item >
+        <mat-icon matListItemIcon>link</mat-icon>
+        <div matListItemTitle>CV</div>
+        <div matListItemLine><a href="https://yacineaouine-cv.littleboytechnology.fr/" target="_blank">CV Yacine Aouine</a></div>
+      </mat-list-item>
+
+      <mat-list-item >
+        <mat-icon matListItemIcon>link</mat-icon>
+        <div matListItemTitle>LinkedIn</div>
+        <div matListItemLine><a href="" target="_blank">Profil LinkedIn</a></div>
+      </mat-list-item>
+
+      <mat-list-item >
+        <mat-icon matListItemIcon>link</mat-icon>
+        <div matListItemTitle>Malt</div>
+        <div matListItemLine><a href="" target="_blank">Profil Malt</a></div>
+      </mat-list-item>
+
+      <mat-list-item >
+        <mat-icon matListItemIcon>link</mat-icon>
+        <div matListItemTitle>Site Web</div>
+        <div matListItemLine><a href="https://littleboytechnology.fr/" target="_blank">Little Boy Technology</a></div>
+      </mat-list-item>
+
+    </mat-list>
+
+    <div class="container-logo">
+      <img src="../assets/logo_lbt.jpg" alt="logo littleboytechnology.fr" width="100px" height="100%">
+    </div>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+     
+    <mat-toolbar color="primary">
+      <button type="button" mat-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{title}} - {{subtitle}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+

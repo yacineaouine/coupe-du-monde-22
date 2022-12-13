@@ -1,0 +1,201 @@
+<mat-progress-bar mode="query" color="warn" *ngIf="progress"></mat-progress-bar>
+
+
+<h1>Phase finale</h1>
+
+
+<div class="winner" *ngIf="winnerWorldCup">
+
+    <div>
+
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_nunbkpxg.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+
+        <h3>And the winner is: </h3> 
+
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_fJ7CVd.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+        
+    </div>
+
+    <p>
+        <span class="flag" [class]="winner.flag"></span>  <span class="name">{{winner.team}}</span>
+    </p>
+
+</div>
+
+
+<section>
+
+
+    <h2 *ngIf="!showEighth" (click)="showEighthAction(showEighth)">8th</h2>
+
+    <div class="phases" *ngIf="showEighth">
+
+        <h2 (click)="showEighthAction(showEighth)">Huitièmes de finale <mat-icon matListItemIcon >close</mat-icon></h2>
+
+
+        <div class="list-matchs">
+
+            <mat-card class="match" *ngFor="let match of list_huitiemes; let id = index;">
+
+                <mat-card-header>
+                    <mat-card-subtitle>{{match.date}}</mat-card-subtitle>
+                </mat-card-header>                
+
+                <mat-card-content>
+
+                    <!--Equipe 1-->
+                    <div class="team">
+                        <span [class]="match.team1.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team1.winner ? 'green' : 'lightgrey' }">{{match.team1.name}}</span> 
+                        <span class="team-score">{{match.team1.score}}</span> 
+                    </div>
+
+                    <!--Equipe 2-->
+                    <div class="team">
+                        <span [class]="match.team2.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team2.winner ? 'green' : 'lightgrey' }">{{match.team2.name}}</span> 
+                        <span class="team-score">{{match.team2.score}}</span> 
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+    </div>
+
+    <h2 *ngIf="!showQuarter" (click)="showQuarterAction(showQuarter)">4th</h2>
+
+    <div class="phases" *ngIf="showQuarter">
+
+        <h2 (click)="showQuarterAction(showQuarter)">Quarts de finale <mat-icon matListItemIcon>close</mat-icon></h2>
+
+        <div class="list-matchs" >
+
+            <mat-card class="match" *ngFor="let match of list_quart; let id = index;">
+
+                <mat-card-header>
+                    <mat-card-subtitle>{{match.date}}</mat-card-subtitle>
+                </mat-card-header>                
+
+                <mat-card-content>
+
+                    <!--Equipe 1-->
+                    <div class="team">
+                        <span [class]="match.team1.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team1.winner ? 'green' : 'lightgrey' }">{{match.team1.name}}</span> 
+                        <span class="team-score">{{match.team1.score}}</span> 
+                    </div>
+
+                    <!--Equipe 2-->
+                    <div class="team">
+                        <span [class]="match.team2.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team2.winner ? 'green' : 'lightgrey' }">{{match.team2.name}}</span> 
+                        <span class="team-score">{{match.team2.score}}</span> 
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+    </div>
+
+    <div class="phases">
+
+        <h2>Demi-finale</h2>
+
+
+        <div class="list-matchs">
+
+            <mat-card class="match" *ngFor="let match of list_demi; let id = index;">
+
+                <mat-card-header>
+                    <mat-card-subtitle>{{match.date}}</mat-card-subtitle>
+                </mat-card-header>                
+
+                <mat-card-content>
+
+                    <!--Equipe 1-->
+                    <div class="team">
+                        <span [class]="match.team1.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team1.winner ? 'green' : 'lightgrey' }">{{match.team1.name}}</span> 
+                        <span class="team-score">{{match.team1.score}}</span> 
+                    </div>
+
+                    <!--Equipe 2-->
+                    <div class="team">
+                        <span [class]="match.team2.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team2.winner ? 'green' : 'lightgrey' }">{{match.team2.name}}</span> 
+                        <span class="team-score">{{match.team2.score}}</span> 
+                    </div>
+
+                    <button mat-stroked-button (click)="playGame(match, id)" [disabled]="match.played">Jouer le match</button>
+
+                </mat-card-content>
+
+                <span class="modele_precision" *ngIf="match.precision_modele !== null">Précision du modèle: {{match.precision_modele | number}}%</span>
+
+            </mat-card>
+
+        </div>
+
+    </div>
+
+    <div class="phases">
+
+        <h2>Finale</h2>
+
+        <div class="list-matchs">
+
+            <mat-card class="match" *ngFor="let match of list_finale; let id = index;">
+
+                <mat-card-header>
+                    <mat-card-subtitle>{{match.date}}</mat-card-subtitle>
+                </mat-card-header>                
+
+                <mat-card-content>
+
+                    <!--Equipe 1-->
+                    <div class="team">
+                        <span [class]="match.team1.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team1.winner ? 'green' : 'lightgrey' }">{{match.team1.name}}</span> 
+                        <span class="team-score">{{match.team1.score}}</span> 
+                    </div>
+
+                    <!--Equipe 2-->
+                    <div class="team">
+                        <span [class]="match.team2.flag"></span> 
+                        <span class="team-name" [ngStyle]="{'color':match.team2.winner ? 'green' : 'lightgrey' }">{{match.team2.name}}</span> 
+                        <span class="team-score">{{match.team2.score}}</span> 
+                    </div>
+
+                    <button mat-stroked-button (click)="playFinalGame(match)" [disabled]="disablePlayFinale">JOUER LA FINALE</button>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="winner" *ngIf="winnerWorldCup">
+
+    <div>
+
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_nunbkpxg.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+
+        <h3>And the winner is: </h3> 
+
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_fJ7CVd.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop autoplay></lottie-player>
+        
+    </div>
+
+    <p>
+        <span class="flag" [class]="winner.flag"></span>  <span class="name">{{winner.team}}</span>
+    </p>
+
+</div>

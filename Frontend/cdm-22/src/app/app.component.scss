@@ -1,0 +1,57 @@
+
+mat-toolbar {
+  position: sticky;
+  top: 1px;
+  z-index: 5;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-container {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+  
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+  
+.example-sidenav {
+  padding: 20px;
+}
+
+.version {
+  color: white;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  background: lightgray;
+  font-weight: bolder;
+}
+
+.container-logo {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-logo img {
+  border-radius: 50px;
+}
+
+
+
+@media only screen and (max-width: 600px)
+{
+  mat-toolbar {
+    font-size: x-small;
+  }
+}
